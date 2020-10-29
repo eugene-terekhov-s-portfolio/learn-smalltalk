@@ -6,11 +6,15 @@ Class {
 
 { #category : #'as yet unclassified' }
 Song >> verse: aNumber [
-	"comment stating purpose of instance-side message"
-	"scope: class-variables  &  instance-variables"	
-	^ String new writeStream 
-		nextPutAll: '99 bottles of beer on the wall, 99 bottles of beer';	cr;
-		nextPutAll: 'Take one down and pass it around,'; 	cr;
-		nextPutAll: '98 bottles of beer on the wall.'; cr;
-	  contents. 
+	"I return lyrics for the specified verse number."
+
+	| replacementValues |
+	replacementValues := Dictionary
+		newFrom:
+			{(#bottleNumber -> aNumber).
+			(#nextBottleNumber -> (aNumber - 1))}.
+	
+	^ '{bottleNumber} bottles of beer on the wall, {bottleNumber} bottles of beer.
+Take one down and pass it around, {nextBottleNumber} bottles of beer on the wall.
+' format: replacementValues
 ]

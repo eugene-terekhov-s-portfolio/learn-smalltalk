@@ -9,16 +9,23 @@ Class {
 }
 
 { #category : #tests }
-SongTest >> testFirstVerse [
-	"comment stating purpose of instance-side message"
-	"scope: class-variables  &  instance-variables"	
+SongTest >> testAnotherVerse [	
 	| actual expected |
-	actual := Song new verse: 99.
-	expected := String new writeStream
-		nextPutAll: '99 bottles of beer on the wall, 99 bottles of beer'; cr;
-		nextPutAll: 'Take one down and pass it around,'; cr;
-		nextPutAll: '98 bottles of beer on the wall.'; cr;
-		contents.
-		
+	expected := 
+'3 bottles of beer on the wall, 3 bottles of beer.
+Take one down and pass it around, 2 bottles of beer on the wall.
+'.
+	actual := Song new verse: 3.	
+	self assert: actual equals: expected.
+]
+
+{ #category : #tests }
+SongTest >> testFirstVerse [	
+	| actual expected |
+	expected := 
+'99 bottles of beer on the wall, 99 bottles of beer.
+Take one down and pass it around, 98 bottles of beer on the wall.
+'.
+	actual := Song new verse: 99.	
 	self assert: actual equals: expected.
 ]
