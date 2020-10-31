@@ -35,7 +35,7 @@ SongTest >> testVerse2 [
 	| actual expected |
 	expected := 
 '2 bottles of beer on the wall, 2 bottles of beer.
-Take one down and pass it around, one bottle of beer on the wall.
+Take one down and pass it around, 1 bottle of beer on the wall.
 '.
 	actual := Song new verse: 2.	
 	self assert: actual equals: expected.

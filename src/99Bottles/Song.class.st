@@ -8,15 +8,10 @@ Class {
 Song >> verse: aNumber [
 	"I return lyrics for the specified verse number."
 
-	| replacementValues |
-	replacementValues := Dictionary
-		newFrom:
-			{(#bottleNumber -> aNumber).
-			(#nextBottleNumber -> (((aNumber - 1) = 1) ifTrue: ['one'] ifFalse: [aNumber - 1])).
-			(#container -> 'bottles').
-			(#nextContainer -> (((aNumber - 1) = 1) ifTrue: ['bottle'] ifFalse: ['bottles']))}.
-	
-	^ '{bottleNumber} {container} of beer on the wall, {bottleNumber} {container} of beer.
-Take one down and pass it around, {nextBottleNumber} {nextContainer} of beer on the wall.
-' format: replacementValues
+	^ '{1} of beer on the wall, {1} of beer.
+Take one down and pass it around, {2} of beer on the wall.
+' format: {
+		(BottleNumber new withNumber: aNumber) asString . 
+		(BottleNumber new withNumber: aNumber - 1) asString
+	}
 ]
