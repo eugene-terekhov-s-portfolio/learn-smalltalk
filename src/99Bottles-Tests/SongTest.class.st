@@ -31,6 +31,17 @@ Take one down and pass it around, 98 bottles of beer on the wall.
 ]
 
 { #category : #tests }
+SongTest >> testVerse1 [
+	| actual expected |
+	expected := 
+'1 bottle of beer on the wall, 1 bottle of beer.
+Take it down and pass it around, no more bottles of beer on the wall.
+'.
+	actual := Song new verse: 1.	
+	self assert: actual equals: expected.
+]
+
+{ #category : #tests }
 SongTest >> testVerse2 [
 	| actual expected |
 	expected := 
