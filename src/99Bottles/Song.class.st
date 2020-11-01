@@ -10,11 +10,20 @@ Song >> verse: aNumber [
 
 	| bottle |
 	bottle := BottleNumber new withNumber: aNumber.
-	^ '{1} of beer on the wall, {1} of beer.
-Take {3} down and pass it around, {2} of beer on the wall.
+	^ '{1} of beer on the wall, {2} of beer.
+{3}, {4} of beer on the wall.
 '
 		format:
-			{bottle asString .
-			(BottleNumber new withNumber: aNumber - 1) asString .
-			bottle pronoun}
+			{bottle asString capitalized .
+			bottle asString .
+			bottle action . 
+			bottle nextBottle asString . }
+]
+
+{ #category : #'as yet unclassified' }
+Song >> verseFrom: fromVerse to: toVerse [ 
+	| output | 
+	output := String new writeStream.
+	(Interval from: toVerse to: fromVerse) reverse do: [ :each | output nextPutAll: (self verse: each) ].
+	^ output contents .
 ]
