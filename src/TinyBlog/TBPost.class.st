@@ -80,6 +80,20 @@ TBPost >> initialize [
 	self notVisible.
 ]
 
+{ #category : #testing }
+TBPost >> isUnclassified [
+"Says if this blog post has no category assigned"
+	
+	^ self category = self class unclassifiedTag.
+]
+
+{ #category : #testing }
+TBPost >> isVisible [ 
+"Says if this post is publicly visible or not"
+
+	^ self visible
+]
+
 { #category : #action }
 TBPost >> notVisible [ 
 	"Post becomes unpublished, i.e. not publicly visible"
