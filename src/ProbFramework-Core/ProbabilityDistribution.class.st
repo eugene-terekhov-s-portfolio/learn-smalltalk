@@ -22,6 +22,13 @@ ProbabilityDistribution class >> new [
 	^ self basicNew 
 ]
 
+{ #category : #testing }
+ProbabilityDistribution >> atEnd [
+	"Answer whether the receiver can access any more objects."
+
+	^ false
+]
+
 { #category : #private }
 ProbabilityDistribution >> computeSample: m outOf: n [
 	"Compute the number of ways one can draw a sample without replacement of size m from a set of size n."
@@ -29,6 +36,13 @@ ProbabilityDistribution >> computeSample: m outOf: n [
 	m > n
 		ifTrue: [ ^ 0.0 ].
 	^ n factorial / (n - m) factorial
+]
+
+{ #category : #accessing }
+ProbabilityDistribution >> contents [
+	"Answer all of the contents of the receiver."
+
+	self error: 'this is an infinite stream, cannot answer it''s contents'
 ]
 
 { #category : #'probability functions' }
@@ -56,4 +70,12 @@ ProbabilityDistribution >> next [
 	"This is a general random number generation method for any probability law; use the (0, 1) uniformly distributed random variable U as the value of the law's distribution function. Obtain the next random value and the solve for the inverse. The inverse solution is defined by the subclass."
 
 	^ self inverseDistribution: U next
+]
+
+{ #category : #accessing }
+ProbabilityDistribution >> nextPut: anObject [ 
+	"Insert the argument, anObject, as the next object accessible by the 
+	receiver. Answer anObject."
+	
+	self error: 'this is a read-only stream of generated values' 
 ]
