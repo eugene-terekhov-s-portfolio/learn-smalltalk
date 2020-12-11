@@ -1,6 +1,6 @@
 Class {
 	#name : #Bernoulli,
-	#superclass : #DiscreteDistribution,
+	#superclass : #DiscreteProbability,
 	#instVars : [
 		'prob'
 	],
