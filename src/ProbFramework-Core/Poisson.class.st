@@ -1,6 +1,6 @@
 Class {
 	#name : #Poisson,
-	#superclass : #DiscreteDistribution,
+	#superclass : #DiscreteProbability,
 	#instVars : [
 		'mu'
 	],

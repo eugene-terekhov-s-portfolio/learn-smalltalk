@@ -1,11 +1,11 @@
 Class {
-	#name : #DiscreteDistribution,
+	#name : #DiscreteProbability,
 	#superclass : #ProbabilityDistribution,
 	#category : #'ProbFramework-Core'
 }
 
 { #category : #'probability functions' }
-DiscreteDistribution >> distribution: aCollection [
+DiscreteProbability >> distribution: aCollection [
 	"Answer the sum of the discrete values of the density function for each element in the collection."
 
 	| t |
